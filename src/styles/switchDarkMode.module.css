@@ -1,0 +1,13 @@
+@import url('./var.css');
+
+.justifyContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    column-gap: 15px;
+    flex-grow: 1;
+}
+
+.svg{
+    fill : var(--text)
+}
