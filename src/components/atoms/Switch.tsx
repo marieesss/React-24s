@@ -1,21 +1,19 @@
 import React from 'react';
 import { ChangeEvent as ReactChangeEvent } from 'react';
-import "../../styles/switch.css"
+import styles from "../../styles/switch.module.css"
 
 interface SwitchProps {
-    text : string, 
     handleChange: (event: ReactChangeEvent<HTMLInputElement>) => void;
     value: string;
     valueToBeChecked: string;
 }
 
-const Switch: React.FC<SwitchProps> = ({ text, handleChange, value, valueToBeChecked }) => {
+const Switch: React.FC<SwitchProps> = ({handleChange, value, valueToBeChecked }) => {
     return (
-        <div className="container-switch">
-            <span> {text} </span>
-            <label className="switch">
+        <div>
+            <label className={styles.switch}>
                 <input type="checkbox" onChange={handleChange} checked={value === valueToBeChecked} />
-                <span className="slider round"></span>
+                <span className={`${styles.slider} ${styles.round}`}></span>
             </label>
         </div>
     );
