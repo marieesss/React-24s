@@ -41,7 +41,7 @@ const Home = () => {
   return (
     <main>
       <h1>Welcome to homepage</h1>
-      {showChart && <Chart labels={labels} data={data}/>}
+      {showChart && <Chart labels={labels} data={data} text='24s tehcnical test' />}
     </main>
   )
 }

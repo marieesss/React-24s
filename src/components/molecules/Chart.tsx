@@ -31,7 +31,7 @@ var root = document.documentElement
 var style = getComputedStyle(root);
   
 
-const Chart : React.FC<ChartProps> = ({labels, data}) => {
+const Chart : React.FC<ChartProps> = ({labels, data, text}) => {
 
   const options = {
     responsive: true,
@@ -41,7 +41,7 @@ const Chart : React.FC<ChartProps> = ({labels, data}) => {
       },
       title: {
         display: true,
-        text: '24s technical test',
+        text: text,
       },
       tooltip: {
         callbacks: {
