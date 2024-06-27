@@ -8,9 +8,13 @@ import {
     Title,
     Tooltip,
     Legend,
+    scales,
+    Scale,
+    TooltipItem,
   } from 'chart.js';
   import { Line } from 'react-chartjs-2';
 import { Chart as ChartProps} from '../../types/chart';
+import styles from "../../styles/chart.module.css"
   
   ChartJS.register(
     CategoryScale,
@@ -21,8 +25,15 @@ import { Chart as ChartProps} from '../../types/chart';
     Tooltip,
     Legend
   );
+
+// get css colors
+var root = document.documentElement
+var style = getComputedStyle(root);
   
-const options = {
+
+const Chart : React.FC<ChartProps> = ({labels, data}) => {
+
+  const options = {
     responsive: true,
     plugins: {
       legend: {
@@ -30,24 +41,56 @@ const options = {
       },
       title: {
         display: true,
-        text: 'Chart.js Line Chart',
+        text: '24s technical test',
       },
-    },
-  };
-
-  // get css colors
-  var root = document.documentElement
-  var style = getComputedStyle(root);
+      tooltip: {
+        callbacks: {
+          label: function (context: TooltipItem<'line'>) {
+            let label = context.dataset.label || '';
   
+            if (label) {
+              label += ': ';
+            }
+            if (context.parsed.y !== null && context.parsed.y !== undefined) {
+              label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+            }
+            return label;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: {
+          color: style.getPropertyValue('--accent'),
+          borderColor: 'green'
+        }
+      },
+      y: {
+        grid: {
+          color: style.getPropertyValue("--accent"),
+          borderColor: 'green'
+        },
+        ticks: {
+          callback: function (this: Scale, tickValue: number | string) {
+            if (typeof tickValue === 'number') {
+              return '$' + tickValue.toFixed(2);
+            }
+            return tickValue;
+          },
+        }
+      }
+    }
+  };  
 
-const Chart : React.FC<ChartProps> = ({labels, data}) => {
+
     const chartData = {
         labels,
         datasets: [
           {
             label: 'Bitcoin Price Index',
             data,
-            borderColor: style.getPropertyValue('--accent'),
+            borderColor: style.getPropertyValue('--secondary'),
             backgroundColor: style.getPropertyValue('--background'),
           },
         ],
@@ -55,8 +98,8 @@ const Chart : React.FC<ChartProps> = ({labels, data}) => {
     
     
   return (
-    <div>
-       {data.length > 0 && <Line data={chartData} options={options} />}
+    <div className={styles.chartContainer}>
+       {data.length > 0 && <Line data={chartData} options={options}  />}
     </div>
   )
 }
