@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "../../styles/button.module.css"
 interface ButtonProps {
-    handleClick: ()=> void;
+    handleClick?: ()=> void;
     text: string;
 }
 

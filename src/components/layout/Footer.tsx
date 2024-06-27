@@ -1,7 +1,7 @@
 // Footer.tsx
 import React, { useContext, useMemo } from 'react';
 import { ChartContext } from '../../utils/context/chartContext';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Button from '../atoms/Button';
 const Footer: React.FC = () => {
     // Instance of chart context
@@ -35,7 +35,9 @@ const Footer: React.FC = () => {
     <footer>
         {(isHome && !showChart)&& <Button handleClick={showData} text='Show Chart'/>}
        {(isHome && showChart) &&  <Button handleClick={hideData} text="Remove Chart"/>}
-       <a href="https://github.com/marieesss">Mon github</a>
+       <Link to={"https://github.com/marieesss"} target='_blank'>
+       <Button handleClick={hideData} text="Mon github"/>
+       </Link>
     </footer>
   );
 };
