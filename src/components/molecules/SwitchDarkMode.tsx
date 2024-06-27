@@ -11,9 +11,9 @@ const SwitchDarkMode = () => {
   const [theme, handleChange] = useTheme(themes.darkTheme);
   return (
     <div className={styles.justifyContent}>
-    <img  className={styles.svg} src={sun} width={20}/>
+    <img  className={styles.svg} src={sun} width={20} alt="sun-light"/>
     <Switch handleChange={handleChange} value={theme} valueToBeChecked={themes.darkTheme}/>
-    <img  className={styles.svg} src={moon} width={20}/>
+    <img  className={styles.svg} src={moon} width={20}  alt="moon-dark"/>
     </div>
   )
 }
