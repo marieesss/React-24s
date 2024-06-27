@@ -2,6 +2,7 @@
 import React, { useContext, useMemo } from 'react';
 import { ChartContext } from '../../utils/context/chartContext';
 import { useLocation } from 'react-router-dom';
+import Button from '../atoms/Button';
 const Footer: React.FC = () => {
     // Instance of chart context
   const chartContext = useContext(ChartContext);
@@ -32,9 +33,9 @@ const Footer: React.FC = () => {
 
   return (
     <footer>
-       {(isHome && !showChart)&& <button onClick={showData}>Show Chart</button>}
-       {(isHome && showChart) &&  <button onClick={hideData}>Hide Chart</button>}
-       <a href="">Mon github</a>
+        {(isHome && !showChart)&& <Button handleClick={showData} text='Show Chart'/>}
+       {(isHome && showChart) &&  <Button handleClick={hideData} text="Remove Chart"/>}
+       <a href="https://github.com/marieesss">Mon github</a>
     </footer>
   );
 };
