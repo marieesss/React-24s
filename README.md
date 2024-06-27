@@ -1,4 +1,4 @@
-# Technical test for an apprenticeship application as a frontend developper in 24S
+# Technical test for an apprenticeship application as a frontend developper at 24S
 
 See live [here](https://technical-homework.netlify.app/)
 
