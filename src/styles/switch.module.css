@@ -41,11 +41,11 @@
   }
   
   input:checked + .slider {
-    background-color:var(--primary);
+    background-color:var(--secondary);
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px var(--secondary);
+    box-shadow: 0 0 1px var(--primary);
   }
   
   input:checked + .slider:before {
